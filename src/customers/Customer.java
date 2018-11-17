@@ -1,27 +1,22 @@
 package customers;
 
+import accounts.BankAccount;
 import accounts.CurrentAccount;
 import accounts.SavingsAccount;
 
-import java.util.Arrays;
-import java.util.Date;
-import java.util.List;
+import java.util.*;
 
 public class Customer {
     private String name;
     private Date dateOfBirth;
     private boolean status;
-    private Object[] customerAccounts;
     private String email;
     private String mobileNumber;
     private String natIdNumber;
-    private SavingsAccount[] savingsAccounts;
-    private CurrentAccount[] currentAccounts;
+    private ArrayList<BankAccount> accounts = new ArrayList<>();
 
-    public Customer(String name, Date dateOfBirth, String natIdNumber) {
+    public Customer(String name) {
         this.name = name;
-        this.dateOfBirth = dateOfBirth;
-        this.natIdNumber = natIdNumber;
     }
 
     public String getName() {
@@ -42,14 +37,6 @@ public class Customer {
 
     public void setStatus(boolean status) {
         this.status = status;
-    }
-
-    public List<Object> getCustomerAccounts() {
-        return Arrays.asList(savingsAccounts, currentAccounts);
-    }
-
-    public void setCustomerAccounts(Object[] customerAccounts) {
-        this.customerAccounts = customerAccounts;
     }
 
     public String getEmail() {
@@ -76,7 +63,18 @@ public class Customer {
         this.natIdNumber = natIdNumber;
     }
 
-//    public double getNetWorth() {
-//        return savingsAccount.getBalance() + currentAccount.getBalance();
-//    }
+    public ArrayList<BankAccount> getAccounts() {
+        return accounts;
+    }
+
+    public void addAccount(BankAccount account) {
+        accounts.add(account);
+    }
+
+    public void setAccounts(BankAccount... accounts) {
+//        Collections.addAll(this.accounts, accounts);
+        for (BankAccount account : accounts) {
+            this.accounts.add(account);
+        }
+    }
 }

@@ -23,7 +23,7 @@ public class SavingsAccount extends BankAccount {
     public double withdraw(double withdraw) throws InvalidWithdrawalException {
         double balance = getBalance();
         if ((balance-withdraw)>MIN_BALANCE_LIMIT) {
-            setBalance(balance);
+            setBalance(balance-withdraw);
         } else if (withdraw>5000.00d) {
             throw new InvalidWithdrawalException("Exceeds withdraw limit");
         } else {

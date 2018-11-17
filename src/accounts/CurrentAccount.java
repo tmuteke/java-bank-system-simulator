@@ -23,7 +23,7 @@ public class CurrentAccount extends BankAccount {
     public double withdraw(double withdraw) throws InvalidWithdrawalException {
         double balance = getBalance();
         if ((balance-withdraw)>MIN_BALANCE_LIMIT) {
-            setBalance(balance);
+            setBalance(balance-withdraw);
         } else {
             throw new InvalidWithdrawalException("Exceeds withdraw limit");
         }
