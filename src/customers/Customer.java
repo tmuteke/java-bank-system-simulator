@@ -1,15 +1,12 @@
 package customers;
 
 import accounts.BankAccount;
-import accounts.CurrentAccount;
-import accounts.SavingsAccount;
 
 import java.util.*;
 
 public class Customer {
     private String name;
     private Date dateOfBirth;
-    private boolean status;
     private String email;
     private String mobileNumber;
     private String natIdNumber;
@@ -33,10 +30,6 @@ public class Customer {
 
     public void setDateOfBirth(Date dateOfBirth) {
         this.dateOfBirth = dateOfBirth;
-    }
-
-    public void setStatus(boolean status) {
-        this.status = status;
     }
 
     public String getEmail() {
@@ -72,9 +65,11 @@ public class Customer {
     }
 
     public void setAccounts(BankAccount... accounts) {
-//        Collections.addAll(this.accounts, accounts);
-        for (BankAccount account : accounts) {
-            this.accounts.add(account);
-        }
+        Collections.addAll(this.accounts, accounts);
+    }
+
+    @Override
+    public String toString() {
+        return name;
     }
 }

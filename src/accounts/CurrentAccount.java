@@ -1,8 +1,6 @@
 package accounts;
 
 public class CurrentAccount extends BankAccount {
-    private String chequeBookNumber;
-    private final double MIN_BALANCE_LIMIT = 0.00d;
 
     public CurrentAccount(String accountNumber) {
         super(accountNumber);
@@ -12,27 +10,18 @@ public class CurrentAccount extends BankAccount {
         return "CA";
     }
 
-    public String getChequeBookNumber() {
-        return chequeBookNumber;
-    }
-
-    public void setChequeBookNumber(String chequeBookNumber) {
-        this.chequeBookNumber = chequeBookNumber;
-    }
-
-    public double withdraw(double withdraw) throws InvalidWithdrawalException {
+    public void withdraw(double withdraw) throws InvalidWithdrawalException {
         double balance = getBalance();
-        if ((balance-withdraw)>MIN_BALANCE_LIMIT) {
+        if ((balance-withdraw)>0.00) {
             setBalance(balance-withdraw);
         } else {
             throw new InvalidWithdrawalException("Exceeds withdraw limit");
         }
-        return getBalance();
     }
 
     public void applyMonthlyCharges() {
         double balance = getBalance();
-        balance -= 4.50d;
+        balance -= 4.50;
         setBalance(balance);
     }
 }

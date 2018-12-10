@@ -3,11 +3,10 @@ package accounts;
 public abstract class BankAccount {
     private String accountNumber;
     private double balance;
-    private final double MAX_WITHDRAWAL_LIMIT = 5000.00d;
 
-    public BankAccount(String accountNumber) {
+    BankAccount(String accountNumber) {
         this.accountNumber = accountNumber + getAccountType();
-        balance = 0.00d;
+        balance = 0.00;
     }
 
     public abstract String getAccountType();
@@ -24,16 +23,20 @@ public abstract class BankAccount {
         return balance;
     }
 
-    public void setBalance(double balance) {
+    void setBalance(double balance) {
         this.balance = balance;
     }
 
-    public double deposit(double deposit) {
+    public void deposit(double deposit) {
         balance += deposit;
-        return balance;
     }
 
-    public abstract double withdraw(double withdraw) throws InvalidWithdrawalException;
+    public abstract void withdraw(double withdraw) throws InvalidWithdrawalException;
 
     public abstract void applyMonthlyCharges();
+
+    @Override
+    public String toString() {
+        return accountNumber;
+    }
 }
